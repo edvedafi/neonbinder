@@ -1,7 +1,7 @@
-import { Button, ButtonProps } from "@radix-ui/themes";
 import React from "react";
+import { Button, ButtonProps } from "@/components/ui/button";
 
-interface NeonButtonProps extends ButtonProps {
+interface NeonButtonProps extends Omit<ButtonProps, 'variant'> {
   cancel?: boolean;
   children: React.ReactNode;
 }
@@ -11,12 +11,10 @@ export default function NeonButton({
   children,
   ...props
 }: NeonButtonProps) {
-  let colorClass: ButtonProps["color"] = "green";
-  if (cancel) {
-    colorClass = "pink";
-  }
+  const variant = cancel ? "destructive" : "default";
+  
   return (
-    <Button {...props} color={colorClass}>
+    <Button variant={variant} {...props}>
       {children}
     </Button>
   );
