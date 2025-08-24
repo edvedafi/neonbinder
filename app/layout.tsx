@@ -3,9 +3,9 @@ import { Geist, Geist_Mono, Inter, Lexend } from "next/font/google";
 import "./globals.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
-import Head from "next/head";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +35,17 @@ export const metadata: Metadata = {
   },
 };
 
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="animate-pulse space-y-4">
+        <div className="h-4 bg-slate-200 rounded w-48"></div>
+        <div className="h-10 bg-slate-200 rounded w-64"></div>
+      </div>
+    </div>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,12 +53,13 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <Head>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <link rel="icon" href="/favicon.png" />
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${lexend.variable} antialiased`}
+          suppressHydrationWarning
         >
           <Theme
             accentColor="green"
@@ -55,7 +67,9 @@ export default function RootLayout({
             radius="large"
             appearance="light"
           >
-            <ConvexClientProvider>{children}</ConvexClientProvider>
+            <Suspense fallback={<LoadingFallback />}>
+              <ConvexClientProvider>{children}</ConvexClientProvider>
+            </Suspense>
           </Theme>
         </body>
       </html>
