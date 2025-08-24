@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter, Lexend } from "next/font/google";
 import "./globals.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Suspense } from "react";
@@ -10,21 +11,25 @@ import { Suspense } from "react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const lexend = Lexend({
   variable: "--font-lexend",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -32,6 +37,10 @@ export const metadata: Metadata = {
   description: "Your modern card binding application with a beautiful design system",
   icons: {
     icon: "/convex.svg",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
   },
 };
 
@@ -56,21 +65,24 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head>
           <link rel="icon" href="/favicon.png" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${lexend.variable} antialiased`}
           suppressHydrationWarning
         >
-          <Theme
-            accentColor="green"
-            grayColor="sage"
-            radius="large"
-            appearance="light"
-          >
-            <Suspense fallback={<LoadingFallback />}>
-              <ConvexClientProvider>{children}</ConvexClientProvider>
-            </Suspense>
-          </Theme>
+          <ErrorBoundary>
+            <Theme
+              accentColor="green"
+              grayColor="sage"
+              radius="large"
+              appearance="light"
+            >
+              <Suspense fallback={<LoadingFallback />}>
+                <ConvexClientProvider>{children}</ConvexClientProvider>
+              </Suspense>
+            </Theme>
+          </ErrorBoundary>
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>
