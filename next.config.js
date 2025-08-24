@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   poweredByHeader: false,
   
   // Improve hydration stability
@@ -19,9 +18,6 @@ const nextConfig = {
     domains: [],
     formats: ['image/webp', 'image/avif'],
   },
-  
-  // Improve font loading
-  optimizeFonts: true,
   
   // Security headers
   async headers() {
