@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { 
   Button, 
   Input, 
@@ -15,7 +15,33 @@ import {
 } from "@/components/ui"
 import { Mail, Plus } from "lucide-react"
 
+function LoadingState() {
+  return (
+    <div className="container mx-auto py-10 px-4 max-w-4xl">
+      <div className="animate-pulse space-y-6">
+        <div className="h-8 bg-slate-200 rounded w-64"></div>
+        <div className="h-4 bg-slate-200 rounded w-96"></div>
+        <div className="grid grid-cols-3 gap-4">
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className="h-20 bg-slate-200 rounded"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function DesignSystemPage() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <LoadingState />;
+  }
+
   return (
     <div className="container mx-auto py-10 px-4 max-w-4xl">
       <div className="mb-10">
@@ -161,13 +187,13 @@ export default function DesignSystemPage() {
             <AccordionTrigger>Is it styled?</AccordionTrigger>
             <AccordionContent>
               Yes. It comes with default styles that matches the other
-              components' aesthetic.
+              components&apos; aesthetic.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Is it animated?</AccordionTrigger>
             <AccordionContent>
-              Yes. It's animated by default, but you can disable it if you prefer.
+              Yes. It&apos;s animated by default, but you can disable it if you prefer.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
