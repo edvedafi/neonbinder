@@ -47,8 +47,12 @@ export default function SignIn() {
       
       await signIn("password", formData);
       router.push("/");
-    } catch (error: any) {
-      setError(error.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred");
+      }
     } finally {
       setIsLoading(false);
     }
