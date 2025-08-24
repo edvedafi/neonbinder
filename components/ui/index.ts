@@ -3,6 +3,7 @@ export { Input } from "./input"
 export { Label } from "./label"
 export { Textarea } from "./textarea"
 export { InputWithButton } from "./input-with-button"
+export { TextareaWithButton } from "./textarea-with-button"
 export {
   Accordion,
   AccordionContent,
