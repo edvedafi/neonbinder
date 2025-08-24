@@ -63,10 +63,6 @@ export default function RootLayout({
   return (
     <ConvexAuthNextjsServerProvider>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          <link rel="icon" href="/favicon.png" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${lexend.variable} antialiased`}
           suppressHydrationWarning
