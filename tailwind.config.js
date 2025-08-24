@@ -90,8 +90,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Lexend', 'Arial', 'Helvetica', 'sans-serif'],
+        sans: ['var(--font-lexend)', 'Lexend', 'Arial', 'Helvetica', 'sans-serif'],
         inter: ['var(--font-inter)', 'Inter', 'Arial', 'Helvetica', 'sans-serif'],
+        lexend: ['var(--font-lexend)', 'Lexend', 'Arial', 'Helvetica', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
       },
       borderRadius: {
         lg: 'var(--radius)',
