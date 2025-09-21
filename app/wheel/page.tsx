@@ -99,6 +99,12 @@ export default function WheelPage() {
           {spinning ? "Spinning..." : "Spin"}
         </Button>
 
+        {error && (
+          <div className="mt-6 max-w-xl rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-200">
+            {error}
+          </div>
+        )}
+
         {result && (
           <div className="mt-10 w-full max-w-xl rounded-2xl border border-emerald-600/30 bg-slate-900/60 p-6 text-center shadow-[0_0_30px_rgba(16,185,129,0.25)]">
             {result.outcome === "keep" ? (
