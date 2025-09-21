@@ -37,10 +37,16 @@ export default function PrizesPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || weight === "" || Number.isNaN(Number(weight))) return;
-    await upsert({ id: editingId ?? undefined, name: name.trim(), weight: Number(weight) });
-    setName("");
-    setWeight("");
-    setEditingId(null);
+    try {
+      setError(null);
+      await upsert({ id: editingId ?? undefined, name: name.trim(), weight: Number(weight) });
+      setName("");
+      setWeight("");
+      setEditingId(null);
+    } catch (e: any) {
+      console.error(e);
+      setError("You must be signed in to manage prizes. Please sign in and try again.");
+    }
   };
 
   const onEdit = (p: { _id: string; name: string; weight: number }) => {
