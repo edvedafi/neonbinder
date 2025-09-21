@@ -6,10 +6,10 @@
     "dev": "npm-run-all --parallel dev:frontend dev:backend",
     "dev:frontend": "next dev",
     "dev:backend": "convex dev --key $CONVEX_DEPLOY_KEY",
-    "predev": "convex dev --until-success --key $CONVEX_DEPLOY_KEY && convex dev --once --run-sh --key $CONVEX_DEPLOY_KEY \"node setup.mjs --once\" && convex dashboard --key $CONVEX_DEPLOY_KEY",
+    "predev": "convex dev --until-success --key $CONVEX_DEPLOY_KEY && convex dev --once --run-sh --key $CONVEX_DEPLOY_KEY \"node setup.mjs --once\" && convex dashboard--key $CONVEX_DEPLOY_KEY",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint"
   },
   "dependencies": {
     "@convex-dev/auth": "^0.0.81",
