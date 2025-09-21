@@ -48,9 +48,11 @@ export default function WheelPage() {
 
     let serverResult: SpinResult | null = null;
     try {
+      setError(null);
       serverResult = (await convex.mutation("spins:spin", {})) as unknown as SpinResult;
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      setError("You must be signed in to spin. Please sign in and try again.");
       setSpinning(false);
       return;
     }
