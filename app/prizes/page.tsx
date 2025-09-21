@@ -71,6 +71,12 @@ export default function PrizesPage() {
         <h1 className="text-3xl font-bold tracking-tight text-emerald-400 drop-shadow-[0_0_12px_rgba(16,185,129,0.75)]">Prize Weights</h1>
         <p className="mt-2 text-slate-300">Manage your prize names and weights. Higher weight = more likely to be chosen on a winning spin.</p>
 
+        {error && (
+          <div className="mt-6 rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-200">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={onSubmit} className="mt-8 grid grid-cols-1 sm:grid-cols-6 gap-4 rounded-xl border border-emerald-600/30 bg-slate-900/60 p-4 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
           <div className="sm:col-span-3">
             <Label htmlFor="name">Name</Label>
