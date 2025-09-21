@@ -45,7 +45,7 @@ export default function PrizesPage() {
       setEditingId(null);
     } catch (e: any) {
       console.error(e);
-      setError("You must be signed in to manage prizes. Please sign in and try again.");
+      setError("Backend unavailable or not signed in. Please sign in and ensure the Convex backend is deployed.");
     }
   };
 
@@ -61,7 +61,7 @@ export default function PrizesPage() {
       await remove({ id });
     } catch (e: any) {
       console.error(e);
-      setError("You must be signed in to manage prizes. Please sign in and try again.");
+      setError("Backend unavailable or not signed in. Please sign in and ensure the Convex backend is deployed.");
     }
   };
 
