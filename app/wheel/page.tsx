@@ -73,6 +73,7 @@ export default function WheelPage() {
           Neon Prize Wheel
         </h1>
         <p className="mt-2 text-slate-300">50% chance to land on "Keep your Card". Winners are chosen by weighted odds.</p>
+        <a href="/prizes" className="mt-2 text-emerald-300 underline underline-offset-4">Manage prizes</a>
 
         <div className="relative mt-10 flex items-center justify-center">
           <div
