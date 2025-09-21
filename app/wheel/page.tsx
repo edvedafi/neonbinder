@@ -52,7 +52,7 @@ export default function WheelPage() {
       serverResult = (await convex.mutation("spins:spin", {})) as unknown as SpinResult;
     } catch (e: any) {
       console.error(e);
-      setError("You must be signed in to spin. Please sign in and try again.");
+      setError("Unable to spin: backend unavailable or not signed in. Please sign in and ensure the Convex backend is deployed.");
       setSpinning(false);
       return;
     }
