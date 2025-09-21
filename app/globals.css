@@ -1,16 +1,158 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Design System Tokens from Figma */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core Colors from Figma Design System */
+  --slate-900: #0F172A;
+  --slate-700: #334155;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F9F9FB;
+  --slate-50: #FCFCFD;
+  --slate-600: #475569;
+  
+  --green-500: #00D558;
+  --green-400: #6BD980;
+  --green-300: #98E6A4;
+  
+  --emerald-500: #10B981;
+  --emerald-400: #34D399;
+  
+  --black: #000;
+  --white: #FFF;
+
+  /* Fonts */
   --font-sans: 'Lexend', Arial, Helvetica, sans-serif;
+  --font-inter: 'Inter', Arial, Helvetica, sans-serif;
+  
+  /* Design System Variables */
+  --radius: 0.375rem; /* 6px to match Figma border-radius */
+  
+  /* Semantic Color Tokens - Light Mode */
+  --background: oklch(1 0 0);
+  --foreground: var(--slate-900);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--slate-900);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--slate-900);
+  --primary: var(--green-500);
+  --primary-foreground: var(--white);
+  --secondary: var(--slate-100);
+  --secondary-foreground: var(--slate-900);
+  --muted: var(--slate-100);
+  --muted-foreground: var(--slate-500);
+  --accent: var(--slate-100);
+  --accent-foreground: var(--slate-900);
+  --destructive: #DC2626;
+  --destructive-foreground: var(--white);
+  --border: var(--slate-200);
+  --input: var(--slate-200);
+  --ring: var(--green-500);
+  --chart-1: var(--green-500);
+  --chart-2: var(--emerald-500);
+  --chart-3: var(--slate-500);
+  --chart-4: var(--green-400);
+  --chart-5: var(--emerald-400);
+  --sidebar: var(--white);
+  --sidebar-foreground: var(--slate-900);
+  --sidebar-primary: var(--green-500);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--slate-100);
+  --sidebar-accent-foreground: var(--slate-900);
+  --sidebar-border: var(--slate-200);
+  --sidebar-ring: var(--green-500);
+}
+
+/* Dark Mode */
+.dark {
+  --background: var(--slate-900);
+  --foreground: var(--white);
+  --card: var(--slate-900);
+  --card-foreground: var(--white);
+  --popover: var(--slate-900);
+  --popover-foreground: var(--white);
+  --primary: var(--green-500);
+  --primary-foreground: var(--black);
+  --secondary: var(--slate-700);
+  --secondary-foreground: var(--white);
+  --muted: var(--slate-700);
+  --muted-foreground: var(--slate-400);
+  --accent: var(--slate-700);
+  --accent-foreground: var(--white);
+  --destructive: #EF4444;
+  --destructive-foreground: var(--white);
+  --border: var(--slate-700);
+  --input: var(--slate-700);
+  --ring: var(--green-500);
+  --sidebar: var(--slate-900);
+  --sidebar-foreground: var(--white);
+  --sidebar-primary: var(--green-500);
+  --sidebar-primary-foreground: var(--black);
+  --sidebar-accent: var(--slate-700);
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: var(--slate-700);
+  --sidebar-ring: var(--green-500);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  /* Figma Design System Colors */
+  --color-slate-50: var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-400: var(--slate-400);
+  --color-slate-500: var(--slate-500);
+  --color-slate-600: var(--slate-600);
+  --color-slate-700: var(--slate-700);
+  --color-slate-900: var(--slate-900);
+  --color-green-300: var(--green-300);
+  --color-green-400: var(--green-400);
+  --color-green-500: var(--green-500);
+  --color-emerald-400: var(--emerald-400);
+  --color-emerald-500: var(--emerald-500);
+  --color-black: var(--black);
+  --color-white: var(--white);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,6 +179,8 @@ body {
   font-family: 'Neon', sans-serif;
   font-size: 30px;
 }
+
+/* Radix UI Theme Dark Mode Support */
 .dark, .dark-theme {
   --green-1: #060c07;
   --green-2: #111a12;

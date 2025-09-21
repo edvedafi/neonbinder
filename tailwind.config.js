@@ -6,22 +6,115 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Figma Design System Colors
+        'slate': {
+          50: '#FCFCFD',
+          100: '#F9F9FB', 
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+          700: '#334155',
+          900: '#0F172A',
+        },
+        'green': {
+          300: '#98E6A4',
+          400: '#6BD980',
+          500: '#00D558',
+        },
+        'emerald': {
+          400: '#34D399',
+          500: '#10B981',
+        },
+        'black': '#000',
+        'white': '#FFF',
+        
+        // Legacy neon colors for backward compatibility
         'neon-green': '#00D558',    // Primary
         'neon-pink': '#FF2E9A',     // Destructive / Cancel
         'neon-yellow': '#FFE600',   // Warning / Accent
         'neon-blue': '#00C2FF',     // Info / Accent
         'neon-purple': '#A44AFF',   // Tabs / UI
-        background: {
-          DEFAULT: '#000000',  // Main background
+        
+        // Design system semantic colors
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
-        text: {
-          DEFAULT: '#FFFFFF',  // Main text
-        }
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))',
+        },
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
       },
       fontFamily: {
-        sans: ['Lexend', 'sans-serif'],
+        sans: ['var(--font-lexend)', 'Lexend', 'Arial', 'Helvetica', 'sans-serif'],
+        inter: ['var(--font-inter)', 'Inter', 'Arial', 'Helvetica', 'sans-serif'],
+        lexend: ['var(--font-lexend)', 'Lexend', 'Arial', 'Helvetica', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
   plugins: [],
-} 
+}
