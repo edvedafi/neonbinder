@@ -26,6 +26,7 @@ export default function PrizesPage() {
   const [name, setName] = useState("");
   const [weight, setWeight] = useState<number | "">("");
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const sorted = useMemo(() => {
     return (prizes ?? []).slice().sort((a, b) => a.name.localeCompare(b.name));
