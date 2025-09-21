@@ -56,7 +56,13 @@ export default function PrizesPage() {
   };
 
   const onDelete = async (id: string) => {
-    await remove({ id });
+    try {
+      setError(null);
+      await remove({ id });
+    } catch (e: any) {
+      console.error(e);
+      setError("You must be signed in to manage prizes. Please sign in and try again.");
+    }
   };
 
   return (
